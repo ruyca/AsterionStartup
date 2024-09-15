@@ -1,15 +1,17 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 from buisiness_analysis import query_chatgpt, preprocess_string
 import json
 
 # Create the Flask app
 app = Flask(__name__)
+CORS(app)
 
 # Define a route for POST requests
 @app.route('/', methods=['POST'])
 def process_data():
     # Check if request content type is JSON
-    if request.is_json:
+    if request.is_json: 
         # Parse JSON data from the request
         data = request.get_json()
 
